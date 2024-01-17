@@ -1,4 +1,4 @@
-# Django-React-Notes
+# django-react-notes
 
 ## Overview
 Django-React-Notes is a full-stack application designed to streamline the process of note-taking. It allows users to create, view, update, and delete notes efficiently. The backend is powered by Django REST Framework and PostgreSQL, ensuring robust and scalable data handling. The frontend is built with React, Next.js, TypeScript, and Tailwind CSS, offering a responsive and user-friendly interface.
