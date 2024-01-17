@@ -1,5 +1,5 @@
 """
-URL configuration for animecontent project.
+URL configuration for notes project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -16,10 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import UserView, index
+
+from .views import index, getNotes, getNote, getNotesFromDB
+
 
 urlpatterns = [
     path("", index, name="index"),
     path("admin/", admin.site.urls, name="admin"),
-    path("users/", UserView.as_view()),
+    path("notes/", getNotes, name="notes"),
+    path("notes-db/", getNotesFromDB, name="notes-db"),
+    path("note/<str:pk>/", getNote, name="note"),
 ]
