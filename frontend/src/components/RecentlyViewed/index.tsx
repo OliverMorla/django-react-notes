@@ -10,7 +10,7 @@ const RecentlyViewed = () => {
   const [notes, setNotes] = useState<NoteProps[]>([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/notes-db/")
+    fetch("http://127.0.0.1:8000/api/notes/")
       .then((res) => res.json())
       .then((data) => setNotes(data));
   }, []);

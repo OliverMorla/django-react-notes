@@ -17,13 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from .views import index, getNotes, getNote, getNotesFromDB
-
+from .views import index, getNotes, getNote, getRoutes, NotesView, NoteView, UsersView
 
 urlpatterns = [
-    path("", index, name="index"),
-    path("admin/", admin.site.urls, name="admin"),
-    path("notes/", getNotes, name="notes"),
-    path("notes-db/", getNotesFromDB, name="notes-db"),
-    path("note/<str:pk>/", getNote, name="note"),
+    path("api/", index, name="index"),
+    path("api/routes/", getRoutes, name="routes"),
+    path("api/notes/", getNotes, name="notes"),
+    path("api/note/<str:pk>/", getNote, name="note"),
+    path("api/model-view/notes", NotesView.as_view(), name="notes"),
+    path("api/model-view/note/<str:pk>", NoteView.as_view(), name="note"),
+    path("api/model-view/users", UsersView.as_view(), name="users"),
 ]
