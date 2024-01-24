@@ -41,34 +41,28 @@ def getRoutes(request: HttpRequest):
     # Define a dictionary of routes.
     routes = [
         {
-            "Endpoint": "/notes",
+            "Endpoint": "/api",
             "method": "GET",
+            "body": None,
+            "description": "Returns a HTML indicating the status of API.",
+        },
+        {
+            "Endpoint": "/api/routes",
+            "method": "GET",
+            "body": None,
+            "description": "Returns an array of routes available in the API.",
+        },
+        {
+            "Endpoint": "/api/notes",
+            "method": "GET, POST",
             "body": None,
             "description": "Returns an array of notes.",
         },
         {
-            "Endpoint": "/notes/id",
-            "method": "GET",
-            "body": None,
-            "description": "Returns a single note object.",
-        },
-        {
-            "Endpoint": "/notes/create",
-            "method": "POST",
+            "Endpoint": "/api/note/<str:id>",
+            "method": "GET, PUT, DELETE",
             "body": {"body": ""},
             "description": "Creates a new note with data sent in post request.",
-        },
-        {
-            "Endpoint": "/notes/id/update",
-            "method": "PUT",
-            "body": {"body": ""},
-            "description": "Updates an existing note with data sent in post request.",
-        },
-        {
-            "Endpoint": "/notes/id/delete",
-            "method": "DELETE",
-            "body": None,
-            "description": "Deletes an existing note.",
         },
     ]
 

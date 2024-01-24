@@ -3,7 +3,7 @@ import RecentlyViewed from "@/components/RecentlyViewed";
 
 const Home = () => {
   return (
-    <main className="flex flex-col w-full text-white">
+    <main className="flex flex-col w-full text-white overflow-hidden">
       <CreateNote />
       <RecentlyViewed />
     </main>

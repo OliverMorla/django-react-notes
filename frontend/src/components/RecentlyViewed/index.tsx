@@ -22,17 +22,19 @@ const RecentlyViewed = () => {
         <span className="ml-2">My Notes</span>
       </section>
       <p className="opacity-60"> Recently Viewed </p>
-      <section className="flex mt-4 gap-6">
-        {notes.map((note) => (
-          <Note
-            body={note.body}
-            title={note.title}
-            createdAt={note.createdAt}
-            id={note.id}
-            updatedAt={note.updatedAt}
-            key={note.id}
-          />
-        ))}
+      <section className="min-w-2 overflow-y-hidden overflow-x-auto">
+        <section className="flex mt-4 gap-6 p-4">
+          {notes.map((note) => (
+            <Note
+              body={note.body}
+              title={note.title}
+              createdAt={note.createdAt}
+              id={note.id}
+              updatedAt={note.updatedAt}
+              key={note.id}
+            />
+          ))}
+        </section>
       </section>
     </aside>
   );
