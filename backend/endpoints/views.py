@@ -29,9 +29,10 @@ from .serializers import (
 )  # Import the NoteSerializer from serializers.py.
 
 
-# Define the app view.
+# Define the app view. only if you want to use the app template.
 def app(request):
     return render(request, "app/index.html")
+
 
 # Define the index view.
 def index(request):
@@ -80,16 +81,21 @@ def getNotes(request: HttpRequest):
     if request.method == "GET":
         # Get all note objects from the database.
         notes = Note.objects.all()
+
         # Serialize the note objects.
         serializer = NoteSerializer(notes, many=True)
+
         # Return the serialized data.
         return Response(serializer.data)
+
     elif request.method == "POST":
         serializer = NoteSerializer(data=request.data)
 
         if serializer.is_valid():
             serializer.save()
+
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -100,16 +106,20 @@ def getNote(request: HttpRequest, pk):
     if request.method == "GET":
         # Retrieve the note from the database using the provided pk.
         notes = Note.objects.get(id=pk)
+
         # Serialize the note object.
         serializer = NoteSerializer(notes, many=False)
+
         # Return the serialized data.
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     elif request.method == "PUT":
         # Get the data from the request.
         data = request.data
+
         # Retrieve the note to be updated using the provided pk.
         note = Note.objects.get(id=pk)
+
         # Create a serializer instance with the note object and new data.
         serializer = NoteSerializer(instance=note, data=data)
 
@@ -124,6 +134,7 @@ def getNote(request: HttpRequest, pk):
     elif request.method == "DELETE":
         # Retrieve the note to be deleted using the provided pk.
         note = Note.objects.get(id=pk)
+
         # Delete the note.
         note.delete()
 
@@ -135,6 +146,7 @@ def getNote(request: HttpRequest, pk):
 class NotesView(generics.ListCreateAPIView):
     # Set the queryset to all Note objects.
     queryset = Note.objects.all()
+
     # Specify the serializer class to be used.
     serializer_class = NoteSerializer
 
@@ -142,6 +154,7 @@ class NotesView(generics.ListCreateAPIView):
 class NoteView(generics.RetrieveUpdateDestroyAPIView):
     # Set the queryset to all Note objects.
     queryset = Note.objects.all()
+
     # Specify the serializer class to be used.
     serializer_class = NoteSerializer
 
@@ -150,6 +163,7 @@ class NoteView(generics.RetrieveUpdateDestroyAPIView):
 class UsersView(generics.ListCreateAPIView):
     # Set the queryset to all User objects.
     queryset = User.objects.all()
+
     # Specify the serializer class to be used.
     serializer_class = UserSerializer
 
@@ -157,5 +171,6 @@ class UsersView(generics.ListCreateAPIView):
 class UserView(generics.RetrieveUpdateDestroyAPIView):
     # Set the queryset to all User objects.
     queryset = User.objects.all()
+
     # Specify the serializer class to be used.
     serializer_class = UserSerializer
