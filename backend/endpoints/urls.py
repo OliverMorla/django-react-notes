@@ -17,10 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from .views import index, getNotes, getNote, getRoutes, NotesView, NoteView, UsersView
+from .views import (
+    index,
+    getNotes,
+    getNote,
+    getRoutes,
+    NotesView,
+    NoteView,
+    UsersView,
+)
 
 urlpatterns = [
-    path("api/", index, name="index"),
+    path("", index, name="index"),
     path("api/routes/", getRoutes, name="routes"),
     path("api/notes/", getNotes, name="notes"),
     path("api/note/<str:pk>/", getNote, name="note"),

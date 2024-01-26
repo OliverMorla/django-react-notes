@@ -9,6 +9,7 @@ class NoteSerializer(serializers.ModelSerializer):
         model = Note
         fields = "__all__"  # This is a list of strings, so you can use "__all__" to serialize all fields.
 
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User

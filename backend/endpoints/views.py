@@ -29,6 +29,10 @@ from .serializers import (
 )  # Import the NoteSerializer from serializers.py.
 
 
+# Define the app view.
+def app(request):
+    return render(request, "app/index.html")
+
 # Define the index view.
 def index(request):
     # Return a JSON response with a message, not using Django's 'safe' parameter as it's not a dictionary.
